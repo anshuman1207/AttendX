@@ -41,8 +41,9 @@ export default function SubjectsPage() {
       setNewColor("#a78bfa");
       setShowAdd(false);
       loadSubjects();
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
+      alert("Failed to save: " + (err.message || String(err)));
     }
   }
 

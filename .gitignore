@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Firebase
+.firebase/
+firebase-debug.log*
+firebase-debug.err*
+ui-debug.log*
+
+# Explicit Env ignore
+.env.local

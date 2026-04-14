@@ -36,6 +36,7 @@ export default function RootLayout({
             <nav style={{ display: 'flex', gap: '1rem' }}>
               <Link href="/" style={{ color: 'var(--on-surface)', textDecoration: 'none', fontWeight: 500 }}>Dashboard</Link>
               <Link href="/timetable" style={{ color: 'var(--on-surface)', textDecoration: 'none', fontWeight: 500 }}>Timetable</Link>
+              <Link href="/subjects" style={{ color: 'var(--on-surface)', textDecoration: 'none', fontWeight: 500 }}>Subjects</Link>
               <Link href="/analytics" style={{ color: 'var(--on-surface)', textDecoration: 'none', fontWeight: 500 }}>Analytics</Link>
               <Link href="/predictions" style={{ color: 'var(--on-surface)', textDecoration: 'none', fontWeight: 500 }}>Predictions</Link>
             </nav>

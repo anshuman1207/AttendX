@@ -10,10 +10,32 @@ import {
   where,
   orderBy
 } from "firebase/firestore";
-import { TimetableClass, AttendanceEntry, DayOfWeek } from "./types";
+import { Subject, TimetableClass, AttendanceEntry, DayOfWeek } from "./types";
 
 const TIMETABLE_COLLECTION = "timetable";
 const ATTENDANCE_COLLECTION = "attendance";
+const SUBJECTS_COLLECTION = "subjects";
+
+// Subject Operations
+export async function getSubjects(): Promise<Subject[]> {
+  try {
+    const q = query(collection(db, SUBJECTS_COLLECTION));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Subject));
+  } catch (error) {
+    console.warn("Firebase not initialized or configured properly yet.");
+    return [];
+  }
+}
+
+export async function addSubject(data: Omit<Subject, 'id'>): Promise<string> {
+  const docRef = await addDoc(collection(db, SUBJECTS_COLLECTION), data);
+  return docRef.id;
+}
+
+export async function removeSubject(id: string): Promise<void> {
+  await deleteDoc(doc(db, SUBJECTS_COLLECTION, id));
+}
 
 // Timetable Operations
 export async function getTimetable(): Promise<TimetableClass[]> {
